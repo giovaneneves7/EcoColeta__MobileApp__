@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 
 class Login extends StatelessWidget {
-
   const Login({super.key});
 
   @override
@@ -14,34 +13,48 @@ class Login extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
+
+                // ===== [ Campo de Texto do e-mail ] ====== //
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: TextField(
                     decoration: InputDecoration(
-                      border: OutlineInputBorder(),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
                       labelText: "e-mail",
-                      hintText: "insira um endereço de e-mail válido como example@gmail.com",
-                      prefixIcon: Icon(Icons.person),
+                      hintText:
+                          "insira um endereço de e-mail válido como example@gmail.com",
+                      prefixIcon: const Icon(Icons.person),
                     ),
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
+
+                // ===== [ Campo de Texto da senha ] ====== //
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: TextField(
                     obscureText: true,
                     decoration: InputDecoration(
-                      border: OutlineInputBorder(),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
                       labelText: "senha",
-                      prefixIcon: Icon(Icons.lock),
-                      suffixIcon: Icon(Icons.remove_red_eye_sharp),
+                      prefixIcon: const Icon(Icons.lock),
+                      suffixIcon: const Icon(Icons.remove_red_eye_sharp),
                     ),
                   ),
                 ),
+
+                // ===== [ Botão 'entrar' ] ====== //
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
                       backgroundColor: Colors.green,
                       minimumSize: const Size(double.infinity, 0),
                     ),
