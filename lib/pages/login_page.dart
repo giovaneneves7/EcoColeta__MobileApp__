@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import './morador/morador_inicial_page.dart';
+import './morador/morador_home_page.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -65,7 +65,7 @@ class Login extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => const MoradorInicialPage())
+                        MaterialPageRoute(builder: (context) => MoradorHomePage())
                       );
                     },
                     style: ElevatedButton.styleFrom(
