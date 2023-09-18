@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import './morador/morador_inicial_page.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -13,19 +14,31 @@ class Login extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-
-                // ===== [ Campo de Texto do e-mail ] ====== //
+                // ===== [ Logo do EcoColeta ] ====== //
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8.0),
+                  child: Image.asset(
+                    'assets/images/logo.png',
+                    fit: BoxFit.contain,
+                    width: 100.0,
+                    height: 100.0,
+                  ),
+                ),
+
+                // ===== [ Campo de Texto do e-mail ] ====== //
+                Flexible(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        labelText: "e-mail",
+                        hintText:
+                            "insira um endereço de e-mail válido como example@gmail.com",
+                        prefixIcon: const Icon(Icons.person),
                       ),
-                      labelText: "e-mail",
-                      hintText:
-                          "insira um endereço de e-mail válido como example@gmail.com",
-                      prefixIcon: const Icon(Icons.person),
                     ),
                   ),
                 ),
@@ -50,7 +63,11 @@ class Login extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => const MoradorInicialPage())
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8.0),
