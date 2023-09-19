@@ -52,7 +52,7 @@ class _MoradorHomePageState extends State<MoradorHomePage> {
         ),
         body: PageView(
           controller: pageController,
-          children: const [
+          children: [
             MoradorInicialPage(),
             MoradorMapPage(),
             MoradorSettingsPage(),
