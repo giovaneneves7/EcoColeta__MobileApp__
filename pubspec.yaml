@@ -39,6 +39,9 @@ dependencies:
   # Permite o acesso à geolocalização.
   geolocator: ^10.0.1
 
+  # Dependência para gerenciamento de estado.
+  get: ^4.6.6
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
