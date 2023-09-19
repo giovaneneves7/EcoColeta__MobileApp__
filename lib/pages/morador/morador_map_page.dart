@@ -1,18 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class MoradorMapPage extends StatefulWidget {
-  const MoradorMapPage({super.key});
+import 'package:ecocoleta/controllers/descarte_controller.dart';
 
-  @override
-  State<MoradorMapPage> createState() => _MoradorMapPageState();
-}
+class MoradorMapPage extends StatelessWidget {
+  MoradorMapPage({super.key});
 
-class _MoradorMapPageState extends State<MoradorMapPage> {
+  final descarteController = Get.put(DescarteController());
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: const Text("Map page"),
+        body: Center(
+          child: Column(children: [
+            TextButton(
+              onPressed: () {
+                descarteController.getPosition();
+              },
+              child: const Text("Click me"),
+            ),
+            Obx(
+              () => Text(
+                "Latitude: ${descarteController.latitude.value} | Longitude ${descarteController.longitude.value}",
+              ),
+            ),
+          ]),
+        ),
       ),
     );
   }
