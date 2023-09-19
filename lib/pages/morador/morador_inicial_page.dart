@@ -10,12 +10,22 @@ class MoradorInicialPage extends StatefulWidget {
 class _MoradorInicialPageState extends State<MoradorInicialPage> {
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return SafeArea(
       child: Scaffold(
         body: Center(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Column(children: []),
+            child: Column(children: [
+              Container(
+                color: const Color(0xFF03860AFF),
+                child: Column(
+                  children: const [
+                    Text("Coleta Seletiva"),
+                    Text("é a maneira ecológica mais adequada para o descarte.")
+                  ],
+                ),
+              ),
+            ]),
           ),
         ),
       ),

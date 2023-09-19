@@ -16,12 +16,10 @@ class _MoradorHomePageState extends State<MoradorHomePage> {
   int _currentPage = 0;
   late PageController pageController;
 
-  setCurrentPage(page){
-
+  setCurrentPage(page) {
     setState(() {
       _currentPage = page;
     });
-
   }
 
   @override
@@ -66,13 +64,16 @@ class _MoradorHomePageState extends State<MoradorHomePage> {
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentPage,
           items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: ""),
-            BottomNavigationBarItem(icon: Icon(Icons.pin_drop), label: ""),
-            BottomNavigationBarItem(icon: Icon(Icons.settings), label: ""),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home, size: 35.0,), label: "",),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.pin_drop, size: 35.0,), label: "",),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.settings, size: 35.0,), label: "",),
           ],
           onTap: (page) {
             pageController.animateToPage(page,
-                duration: const Duration(milliseconds: 400), curve: Curves.ease,);
+              duration: const Duration(milliseconds: 400), curve: Curves.ease,);
           },
         ),
       ),
