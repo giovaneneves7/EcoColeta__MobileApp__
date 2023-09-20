@@ -3,15 +3,46 @@ import 'dart:async';
 import 'package:get/get.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class DescarteController extends GetxController {
 
+
+  // ================================================ //
+  //                     | ATTRIBUTES |               //
+  // ================================================ //
   final latitude = 0.0.obs;
   final longitude = 0.0.obs;
   late StreamSubscription<Position> positionStream;
+  LatLng _position = LatLng(-11.3022, -41.8477);
+  late GoogleMapController _mapsController;
 
+  // ================================================ //
+  //                     | GETTERS |                  //
+  // ================================================ //
   static DescarteController get to => Get.find<DescarteController>();
 
+  get position => _position;
+  get mapController => _mapsController;
+
+  // ================================================ //
+  //                     | EVENTS |                   //
+  // ================================================ //
+
+  /**
+   * Disparado quando o mapa é criado.
+   *
+   * @param gmc - O GoogleMapController que será atribuido à variável '_mapsController'.
+   */
+  void onMapCreated(GoogleMapController gmc) async {
+
+    _mapsController = gmc;
+
+  }
+
+  // ================================================ //
+  //                     | METHODS |                  //
+  // ================================================ //
   /**
    * Acompanha a posição atual do usuário.
    */
