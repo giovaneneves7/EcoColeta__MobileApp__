@@ -42,6 +42,9 @@ dependencies:
   # Dependência para gerenciamento de estado.
   get: ^4.6.6
 
+  # Dependência para interação com a API do Google Maps.
+  google_maps_flutter: ^2.5.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
