@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import 'package:ecocoleta/controllers/descarte_controller.dart';
+import 'package:ecocoleta/src/controllers/descarte_controller.dart';
 
 class MoradorMapPage extends StatelessWidget {
   MoradorMapPage({super.key});
@@ -16,7 +15,7 @@ class MoradorMapPage extends StatelessWidget {
           child: Column(children: [
             TextButton(
               onPressed: () {
-                descarteController.getPosition();
+                descarteController.watchPosition();
               },
               child: const Text("Click me"),
             ),

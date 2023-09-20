@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:get/get.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter/material.dart';
@@ -6,8 +8,38 @@ class DescarteController extends GetxController {
 
   final latitude = 0.0.obs;
   final longitude = 0.0.obs;
+  late StreamSubscription<Position> positionStream;
 
   static DescarteController get to => Get.find<DescarteController>();
+
+  /**
+   * Acompanha a posição atual do usuário.
+   */
+  void watchPosition() async{
+
+    positionStream = Geolocator.getPositionStream().listen((position) {
+
+      if(position != null){
+
+        latitude.value = position.latitude;
+        longitude.value = position.longitude;
+
+      }
+
+    });
+
+  }
+
+  /**
+   * Fecha o positionStream para evitar o uso desnecessário de memória.
+   */
+  @override
+  void onClose(){
+
+    positionStream.cancel();
+    super.onClose();
+
+  }
 
   /**
    * @author Giovane Neves
@@ -41,6 +73,9 @@ class DescarteController extends GetxController {
     return await Geolocator.getCurrentPosition();
   }
 
+  /**
+   * Pega posição atual do usuário.
+   */
   getPosition() async {
 
     try {
@@ -59,5 +94,6 @@ class DescarteController extends GetxController {
                     snackPosition: SnackPosition.BOTTOM,
       );
     }
+
   }
 }
