@@ -11,9 +11,10 @@ class DescarteController extends GetxController {
   // ================================================ //
   final latitude = 0.0.obs;
   final longitude = 0.0.obs;
+  final markers = Set<Marker>();
   late StreamSubscription<Position> positionStream;
-  LatLng _position = LatLng(-11.3022, -41.8477);
   late GoogleMapController _mapsController;
+  LatLng _position = LatLng(-11.3022, -41.8477);
 
   // ================================================ //
   //                     | GETTERS |                  //
@@ -35,6 +36,8 @@ class DescarteController extends GetxController {
    */
   void onMapCreated(GoogleMapController gmc) async {
     _mapsController = gmc;
+    getPosition();
+    loadDescartes();
   }
 
   // ================================================ //
@@ -118,4 +121,75 @@ class DescarteController extends GetxController {
       );
     }
   }
+
+  /**
+   * Carrega os descartes da base de dados.
+   */
+  void loadDescartes() async {
+    // Recupera os descartes
+    List<GeoPoint> descartes = [
+      GeoPoint(
+          name: "Descarte 01",
+          id: "30",
+          latitude: -11.3022,
+          longitude: -41.8477),
+      GeoPoint(
+          name: "Descarte 02",
+          id: "31",
+          latitude: -11.3030,
+          longitude: -41.8476),
+    ];
+
+    descartes.forEach((descarte) => addDescarte(descarte));
+    // Passa os dados para o método 'addDescarte':
+
+  }
+
+  /**
+   * Adiciona um marker de descarte no mapa.
+   *
+   * @param descarte - O descarte que será adicionado ao mapa.
+   */
+  void addDescarte(GeoPoint descarte) async {
+    LatLng point = LatLng(descarte.latitude, descarte.longitude);
+
+    markers.add(
+      Marker(
+        markerId: MarkerId(descarte.id),
+        position: LatLng(
+          point.latitude,
+          point.longitude,
+        ),
+        infoWindow: InfoWindow(
+          title: descarte.name,
+        ),
+        icon: await BitmapDescriptor.fromAssetImage(
+          const ImageConfiguration(),
+          'assets/images/marker.png',
+        ),
+        onTap: () => showDetails(descarte),
+      ),
+    );
+
+    update();
+  }
+
+  void showDetails(GeoPoint descarte){
+
+    // Lógica para exibir uma modal com detalhes do descarte
+
+  }
+}
+
+class GeoPoint {
+  GeoPoint(
+      {required this.name,
+      required this.id,
+      required this.latitude,
+      required this.longitude});
+
+  String name;
+  String id;
+  double latitude;
+  double longitude;
 }
