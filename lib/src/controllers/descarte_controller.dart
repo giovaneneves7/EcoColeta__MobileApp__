@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:get/get.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class DescarteController extends GetxController {
@@ -30,20 +31,33 @@ class DescarteController extends GetxController {
   // ================================================ //
 
   /**
+   * @author Giovane Neves
+   * @since v1.0.0
+   *
    * Disparado quando o mapa é criado.
    *
    * @param gmc - O GoogleMapController que será atribuido à variável '_mapsController'.
    */
   void onMapCreated(GoogleMapController gmc) async {
+
     _mapsController = gmc;
+
     getPosition();
     loadDescartes();
+
+    // Muda o estilo do mapa para qualquer estilo no padrão 'assets/maps/*.json'.
+    var mapStyle = await rootBundle.loadString("assets/maps/night.json");
+    _mapsController.setMapStyle(mapStyle);
+
   }
 
   // ================================================ //
   //                     | METHODS |                  //
   // ================================================ //
   /**
+   * @author Giovane Neves
+   * @since v1.0.0
+   *
    * Acompanha a posição atual do usuário.
    */
   void watchPosition() async {
@@ -66,7 +80,7 @@ class DescarteController extends GetxController {
 
   /**
    * @author Giovane Neves
-   * @since 2023-09-19 12:12
+   * @since  v1.0.0
    *
    * Pega a posição atual do usuário.
    */
@@ -97,6 +111,9 @@ class DescarteController extends GetxController {
   }
 
   /**
+   * @author Giovane Neves
+   * @since v1.0.0
+   *
    * Pega posição atual do usuário.
    */
   getPosition() async {
@@ -123,6 +140,9 @@ class DescarteController extends GetxController {
   }
 
   /**
+   * @author Giovane Neves
+   * @since v1.0.0
+   *
    * Carrega os descartes da base de dados.
    */
   void loadDescartes() async {
@@ -146,6 +166,9 @@ class DescarteController extends GetxController {
   }
 
   /**
+   * @author Giovane Neves
+   * @since v1.0.0
+   *
    * Adiciona um marker de descarte no mapa.
    *
    * @param descarte - O descarte que será adicionado ao mapa.
@@ -174,6 +197,11 @@ class DescarteController extends GetxController {
     update();
   }
 
+  /**
+   * @author Giovane Neves
+   * @since v1.0.0
+   *
+   */
   void showDetails(GeoPoint descarte){
 
     // Lógica para exibir uma modal com detalhes do descarte
