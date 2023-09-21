@@ -27,6 +27,7 @@ class MoradorMapPage extends StatelessWidget {
                   ),
                   onMapCreated: descarteController.onMapCreated,
                   myLocationEnabled: true,
+                  markers: descarteController.markers,
                 ),
               ),
             ),
