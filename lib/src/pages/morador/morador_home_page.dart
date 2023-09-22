@@ -1,5 +1,4 @@
 import "package:flutter/material.dart";
-import '../../widgets/morador/morador_drawer.dart';
 
 import 'morador_map_page.dart';
 import 'morador_settings_page.dart';
@@ -32,24 +31,6 @@ class _MoradorHomePageState extends State<MoradorHomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        drawer: const MoradorDrawer(),
-        appBar: AppBar(
-          backgroundColor: Colors.green,
-          title: const Text("EcoColeta"),
-          actions: const [
-            Row(
-              children: [
-                CircleAvatar(
-                  backgroundColor: Colors.white,
-                  child: Icon(
-                    Icons.person,
-                    color: Colors.green,
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
         body: PageView(
           controller: pageController,
           children: [
