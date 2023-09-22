@@ -188,7 +188,7 @@ class DescarteController extends GetxController {
         ),
         icon: await BitmapDescriptor.fromAssetImage(
           const ImageConfiguration(),
-          'assets/images/marker.png',
+          'assets/images/marker_coleta_vidro.png',
         ),
         onTap: () => showDetails(descarte),
       ),
