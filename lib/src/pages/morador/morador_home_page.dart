@@ -3,6 +3,7 @@ import "package:flutter/material.dart";
 import 'morador_map_page.dart';
 import 'morador_settings_page.dart';
 import 'morador_inicial_page.dart';
+import '../../widgets/bottom_bar.dart';
 
 class MoradorHomePage extends StatefulWidget {
   MoradorHomePage({super.key});
