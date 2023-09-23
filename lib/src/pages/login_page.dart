@@ -1,8 +1,17 @@
 import "package:flutter/material.dart";
 import './morador/morador_home_page.dart';
+import './catador/catador_home_page.dart';
 
 class Login extends StatelessWidget {
-  const Login({super.key});
+  Login({super.key});
+
+  TextEditingController emailController = new TextEditingController();
+  TextEditingController passwordController = new TextEditingController();
+  
+  Map<String, List<String>> users = {
+    "example@gmail.com" : ["example123", "catador"],
+    "sample@gmail.com" : ["sample123", "morador"],
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +39,7 @@ class Login extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextField(
+                      controller: emailController,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8.0),
@@ -47,6 +57,7 @@ class Login extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextField(
+                    controller: passwordController,
                     obscureText: true,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
@@ -64,15 +75,20 @@ class Login extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => MoradorHomePage())
-                      );
+
+                      login(emailController.text, passwordController.text,).then((isCatador) {
+
+                        Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(builder: (context) => (isCatador ? CatadorHomePage() : MoradorHomePage()))
+                        );
+
+                      });
+
                     },
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8.0),
                       ),
-                      backgroundColor: Colors.green,
                       minimumSize: const Size(double.infinity, 0),
                     ),
                     child: const Padding(
@@ -80,7 +96,6 @@ class Login extends StatelessWidget {
                       child: Text(
                         "entrar",
                         style: TextStyle(
-                          color: Colors.white,
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
                         ),
@@ -95,4 +110,11 @@ class Login extends StatelessWidget {
       ),
     );
   }
+
+  Future<bool> login(final email, final password) async {
+
+    return email == "example@gmail.com" ? true : false;
+
+  }
+
 }
