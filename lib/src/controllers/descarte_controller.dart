@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class DescarteController extends GetxController {
+
   // ================================================ //
   //                     | ATTRIBUTES |               //
   // ================================================ //
@@ -187,7 +188,7 @@ class DescarteController extends GetxController {
           title: descarte.name,
         ),
         icon: await BitmapDescriptor.fromAssetImage(
-          const ImageConfiguration(),
+          const ImageConfiguration(size: Size(20.0, 20.0,)),
           'assets/images/marker_coleta_vidro.png',
         ),
         onTap: () => showDetails(descarte),
