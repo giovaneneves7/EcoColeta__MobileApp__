@@ -1,5 +1,5 @@
 name: ecocoleta
-description: Front-end do EcoColeta
+description: Front-end mobile do EcoColeta
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -45,6 +45,9 @@ dependencies:
   # Dependência para interação com a API do Google Maps.
   google_maps_flutter: ^2.5.0
 
+  # Dependência para possibilitar requsições http.
+  http: ^1.1.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -73,6 +76,7 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/images/
+    - assets/maps/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
