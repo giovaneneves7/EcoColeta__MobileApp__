@@ -1,19 +1,25 @@
 import 'dart:async';
 
+import 'package:ecocoleta/src/pages/catador/catador_descarte_details_page.dart';
 import 'package:get/get.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:ecocoleta/app_context.dart';
 
 class DescarteController extends GetxController {
 
   // ================================================ //
   //                     | ATTRIBUTES |               //
   // ================================================ //
+
   final latitude = 0.0.obs;
   final longitude = 0.0.obs;
   final markers = Set<Marker>();
+  final context = AppContext.context;
+
+  late List<Marker> markersList = [];
   late StreamSubscription<Position> positionStream;
   late GoogleMapController _mapsController;
   LatLng _position = LatLng(-11.3022, -41.8477);
@@ -184,16 +190,18 @@ class DescarteController extends GetxController {
           point.latitude,
           point.longitude,
         ),
-        infoWindow: InfoWindow(
+        /*infoWindow: InfoWindow(
           title: descarte.name,
-        ),
+        ),*/
         icon: await BitmapDescriptor.fromAssetImage(
           const ImageConfiguration(size: Size(20.0, 20.0,)),
           'assets/images/marker_coleta_vidro.png',
         ),
-        onTap: () => showDetails(descarte),
+
       ),
     );
+
+    markersList = markers.toList();
 
     update();
   }
@@ -203,9 +211,26 @@ class DescarteController extends GetxController {
    * @since v1.0.0
    *
    */
-  void showDetails(GeoPoint descarte){
+  void showDescarteDetails(GeoPoint descarte){
 
-    // Lógica para exibir uma modal com detalhes do descarte
+    try{
+
+      print('descarte ${descarte.name}');
+      
+
+       
+    } catch(e, stacktrace){
+
+      Get.snackbar(
+        'Erro',
+        e.toString(),
+        backgroundColor: Colors.grey[900],
+        colorText: Colors.white,
+        snackPosition: SnackPosition.BOTTOM,
+      );
+      print("Erro $e");
+      print("\nStackTrace: $stacktrace");
+    }
 
   }
 }
