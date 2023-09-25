@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import "package:flutter/material.dart";
 import './morador/morador_home_page.dart';
 import './catador/catador_home_page.dart';
+import 'package:http/http.dart' as http;
 
 class Login extends StatelessWidget {
   Login({super.key});
@@ -113,7 +116,26 @@ class Login extends StatelessWidget {
 
   Future<bool> login(final email, final password) async {
 
-    return email == "example@gmail.com" ? true : false;
+    final data = await getUsers();
+
+    return data["tipo"] == "catador" ? true : false;
+
+  }
+
+  Future<dynamic> getUsers() async{
+
+    String url = "https://ecocoleta.free.beeceptor.com/users";
+
+    http.Response response = await http.get(Uri.parse(url));
+
+    if(response.statusCode == 200){
+      print("Response: $response");
+      final responseBody = json.decode(response.body);
+      print("ResponseBody: $responseBody");
+
+      return responseBody;
+
+    }
 
   }
 
