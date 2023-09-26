@@ -30,9 +30,14 @@ class _SplashScreenState extends State<SplashScreen> {
       child: Scaffold(
         body: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset("assets/images/logo.png"),
-              SizedBox(),
+              Image.asset(
+                "assets/images/logo.png",
+                height: 150.0,
+                width: 150.0,
+              ),
+              SizedBox(height: 16.0),
               Text(
                 "EcoColeta",
                 style: TextStyle(
