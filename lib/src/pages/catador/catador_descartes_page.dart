@@ -4,7 +4,7 @@ import 'package:ecocoleta/src/pages/catador/catador_descartes_aceitos_page.dart'
 import 'package:ecocoleta/src/pages/catador/catador_descartes_entregues_page.dart';
 
 class CatadorDescartesPage extends StatefulWidget {
-  const CatadorDescartesPage({super.key});
+  CatadorDescartesPage({super.key});
 
   @override
   State<CatadorDescartesPage> createState() => _CatadorDescartesPageState();
