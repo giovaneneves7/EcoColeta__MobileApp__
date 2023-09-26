@@ -5,16 +5,11 @@ import './morador/morador_home_page.dart';
 import './catador/catador_home_page.dart';
 import 'package:http/http.dart' as http;
 
-class Login extends StatelessWidget {
-  Login({super.key});
+class LoginPage extends StatelessWidget {
+  LoginPage({super.key});
 
   TextEditingController emailController = new TextEditingController();
   TextEditingController passwordController = new TextEditingController();
-  
-  Map<String, List<String>> users = {
-    "example@gmail.com" : ["example123", "catador"],
-    "sample@gmail.com" : ["sample123", "morador"],
-  };
 
   @override
   Widget build(BuildContext context) {
