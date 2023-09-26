@@ -27,8 +27,8 @@ class LoginPage extends StatelessWidget {
                   child: Image.asset(
                     'assets/images/logo.png',
                     fit: BoxFit.contain,
-                    width: 100.0,
-                    height: 100.0,
+                    width: 150.0,
+                    height: 150.0,
                   ),
                 ),
 
