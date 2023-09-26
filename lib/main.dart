@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ecocoleta/src/pages/login_page.dart';
+import 'package:ecocoleta/src/pages/splash_screen.dart';
 import './app_context.dart';
 
 void main() {
@@ -18,9 +18,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
-        colorSchemeSeed: const Color(0xFF4CAF50),
+        colorSchemeSeed: const Color(0xFF04A46C),
       ),
-      home: new Login(),
+      home: new SplashScreen(),
     );
   }
 }
