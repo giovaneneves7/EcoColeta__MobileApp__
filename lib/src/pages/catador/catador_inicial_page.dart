@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ecocoleta/src/pages/user/user_settings_page.dart';
 import 'package:ecocoleta/src/pages/catador/catador_descartes_page.dart';
 
 class CatadorInicialPage extends StatelessWidget {
@@ -96,15 +97,12 @@ class CatadorInicialPage extends StatelessWidget {
             )
         ),
         appBar: AppBar(
-          actions: const [
-            Row(
-              children: [
-                CircleAvatar(
-                  child: Icon(
-                    Icons.person,
-                  ),
-                ),
-              ],
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.person),
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => UserSettingsPage()));
+              },
             ),
           ],
         ),
