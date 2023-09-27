@@ -14,24 +14,32 @@ class CatadorNovosDescartesPage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: Center(
-          child: FutureBuilder<List<Descarte>>(
-            future: getDescartes(),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return CircularProgressIndicator();
-              } else if (snapshot.hasError) {
-                return Text('Erro: ${snapshot.error}');
-              } else {
-                List<NovoDescarte> descartesList = snapshot.data?.map((descarte) =>
-                    NovoDescarte(descarte: descarte,)
-                ).toList() ?? [];
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              FutureBuilder<List<Descarte>>(
+                future: getDescartes(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return CircularProgressIndicator();
+                  } else if (snapshot.hasError) {
+                    return Text('Erro: ${snapshot.error}');
+                  } else {
+                    List<NovoDescarte> descartesList = snapshot.data?.map((descarte) =>
+                        NovoDescarte(descarte: descarte,)
+                    ).toList() ?? [];
 
-                return Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: descartesList,
-                );
-              }
-            },
+                    return Flexible(
+                      child: ListView(
+                        shrinkWrap: true,
+                        children: descartesList,
+                      ),
+
+                    );
+                  }
+                },
+              ),
+            ],
           )
         ),
       ),
