@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:ecocoleta/src/models/descarte.dart';
 
-class NovoDescarte extends StatelessWidget {
+class NovoDescarte extends StatefulWidget {
   NovoDescarte({
     super.key,
     required this.descarte,
+    required this.onAccept,
   });
 
   Descarte descarte;
+  final VoidCallback onAccept;
 
+  @override
+  State<NovoDescarte> createState() => _NovoDescarteState();
+}
+
+class _NovoDescarteState extends State<NovoDescarte> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,13 +34,13 @@ class NovoDescarte extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(4.0),
               child: Text(
-                descarte.id.toString(),
+                widget.descarte.id.toString(),
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(4.0),
               child: Text(
-                descarte.material,
+                widget.descarte.material,
               ),
             ),
             Padding(
@@ -42,7 +49,11 @@ class NovoDescarte extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+
+                      widget.onAccept();
+
+                    },
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(Colors.black),
                     ),
