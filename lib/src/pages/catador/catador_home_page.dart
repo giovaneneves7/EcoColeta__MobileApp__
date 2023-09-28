@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../widgets/bottom_bar.dart';
 import './catador_inicial_page.dart';
 import './catador_map_page.dart';
-import './catador_settings_page.dart';
+import '../user/user_settings_page.dart';
 
 class CatadorHomePage extends StatefulWidget {
   const CatadorHomePage({super.key});
@@ -51,7 +51,7 @@ class _CatadorHomePageState extends State<CatadorHomePage> {
           children: [
             CatadorInicialPage(),
             CatadorMapPage(),
-            CatadorSettingsPage(),
+            UserSettingsPage(),
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
@@ -67,6 +67,9 @@ class _CatadorHomePageState extends State<CatadorHomePage> {
           onTap: (page) {
             pageController.animateToPage(page,
               duration: const Duration(milliseconds: 400), curve: Curves.ease,);
+            setState(() {
+              _currentPage = page;
+            });
           },
         ),
       ),
