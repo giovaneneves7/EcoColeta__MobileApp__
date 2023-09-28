@@ -1,63 +1,54 @@
 import 'package:flutter/material.dart';
 
-class UserSettingsPage extends StatelessWidget {
-  const UserSettingsPage({super.key});
+class CatadorSettingsPage extends StatelessWidget {
+
+  const CatadorSettingsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         body: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("Configurações", style: TextStyle(fontSize: 30.0),),
+              Flexible(
+                child: ListView(
                   children: [
-                    Column(
-                      children: [
-                        CircleAvatar(
-                          radius: 64.0,
-                          child: Icon(
-                            Icons.person,
-                            size: 100.0,
-                          ),
-                        ),
-                      ],
+                    ListTile(
+                      leading: Icon(Icons.add_alert),
+                      title: Text('Notificações'),
+                      trailing: Icon(Icons.arrow_forward_ios),
+                      onTap: () {
+                        // Ação ao tocar no ListTile
+                      },
                     ),
-                  ],
+                    ListTile(
+                      leading: Icon(Icons.lock),
+                      title: Text('Privacidade'),
+                      trailing: Icon(Icons.arrow_forward_ios),
+                      onTap: () {
+                        // Ação ao tocar no ListTile
+                      },
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.star),
+                      title: Text('Avaliação e Feeback'),
+                      trailing: Icon(Icons.arrow_forward_ios),
+                      onTap: () {
+                        // Ação ao tocar no ListTile
+                      },
+                    )
+                  ]
                 ),
-                Flexible(
-                  child: ListView(
-                    children: [
-                      ListTile(
-                        title: Text("Nome"),
-                        subtitle: Text("Username"),
-                        trailing: Icon(Icons.arrow_forward_ios),
-                      ),
-                      ListTile(
-                        title: Text("Telefone"),
-                        subtitle: Text("74999999999"),
-                        trailing: Icon(Icons.arrow_forward_ios),
-                      ),
-                      ListTile(
-                        title: Text("Email"),
-                        subtitle: Text("giovane@example.com"),
-                        trailing: Icon(Icons.arrow_forward_ios),
-                      ),
-                      ListTile(
-                        title: Text("CPF"),
-                        subtitle: Text("123.456.789-00"),
-                        trailing: Icon(Icons.arrow_forward_ios),
-                      ),
-                    ]
-                  ),
-                ),
-              ]
-            ),
+              ),
+              TextButton(
+                onPressed: () {},
+                child: const Text("Encerrar Sessão"),
+              ),
+            ],
           ),
         ),
       ),
