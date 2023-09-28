@@ -5,10 +5,24 @@ import 'package:http/http.dart' as http;
 import 'package:ecocoleta/src/widgets/novo_descarte.dart';
 import 'package:ecocoleta/src/models/descarte.dart';
 
-class CatadorNovosDescartesPage extends StatelessWidget {
+class CatadorNovosDescartesPage extends StatefulWidget {
 
   CatadorNovosDescartesPage({super.key});
 
+  @override
+  State<CatadorNovosDescartesPage> createState() => _CatadorNovosDescartesPageState();
+}
+
+class _CatadorNovosDescartesPageState extends State<CatadorNovosDescartesPage> {
+
+  List<NovoDescarte> descartesList = [];
+
+  void acceptDescarte(Descarte descarte){
+
+    setState((){
+      descartesList.removeWhere((item) => item.descarte.id == descarte.id);
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -26,7 +40,7 @@ class CatadorNovosDescartesPage extends StatelessWidget {
                     return Text('Erro: ${snapshot.error}');
                   } else {
                     List<NovoDescarte> descartesList = snapshot.data?.map((descarte) =>
-                        NovoDescarte(descarte: descarte,)
+                        NovoDescarte(descarte: descarte,onAccept: () => acceptDescarte(descarte),)
                     ).toList() ?? [];
 
                     return Flexible(
