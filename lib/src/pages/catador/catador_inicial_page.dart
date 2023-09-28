@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:ecocoleta/src/pages/user/user_settings_page.dart';
+import 'package:flutter/material.dart';
+import 'package:ecocoleta/src/pages/user/user_profile_page.dart';
 import 'package:ecocoleta/src/pages/catador/catador_descartes_page.dart';
 
 class CatadorInicialPage extends StatelessWidget {
