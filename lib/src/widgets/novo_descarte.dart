@@ -6,10 +6,12 @@ class NovoDescarte extends StatefulWidget {
     super.key,
     required this.descarte,
     required this.onAccept,
+    required this.onRefuse,
   });
 
   Descarte descarte;
   final VoidCallback onAccept;
+  final VoidCallback onRefuse;
 
   @override
   State<NovoDescarte> createState() => _NovoDescarteState();
@@ -66,7 +68,9 @@ class _NovoDescarteState extends State<NovoDescarte> {
                   ),
                   SizedBox(width: 4.0,),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      widget.onRefuse();
+                    },
                     style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all<Color>(Colors.black),
