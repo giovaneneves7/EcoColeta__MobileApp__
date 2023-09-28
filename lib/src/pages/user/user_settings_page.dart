@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class CatadorSettingsPage extends StatelessWidget {
+class UserSettingsPage extends StatelessWidget {
 
-  const CatadorSettingsPage({super.key});
+  const UserSettingsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
