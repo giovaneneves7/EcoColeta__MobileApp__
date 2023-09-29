@@ -22,24 +22,19 @@ class NovoDescarte extends StatefulWidget {
 class _NovoDescarteState extends State<NovoDescarte> {
   @override
   Widget build(BuildContext context) {
-
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(4),
         color: Colors.green[300],
       ),
-
       margin: const EdgeInsets.all(2.0),
       padding: const EdgeInsets.all(8.0),
       alignment: Alignment.center,
-
       child: Center(
         child: Column(
-
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
-
             children: [
               Padding(
                 padding: const EdgeInsets.all(4.0),
@@ -60,12 +55,11 @@ class _NovoDescarteState extends State<NovoDescarte> {
                   children: [
                     TextButton(
                       onPressed: () {
-
                         widget.onAccept();
-
                       },
                       style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(Colors.black),
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(Colors.black),
                       ),
                       child: const Text(
                         "Aceitar",
@@ -74,13 +68,11 @@ class _NovoDescarteState extends State<NovoDescarte> {
                         ),
                       ),
                     ),
-
-                    const SizedBox(width: NovoDescarte.SIZED_BOX_WIDTH,),
-
+                    const SizedBox(
+                      width: NovoDescarte.SIZED_BOX_WIDTH,
+                    ),
                     TextButton(
-                      onPressed: () {
-                        widget.onRefuse();
-                      },
+                      onPressed: () {},
                       style: ButtonStyle(
                         backgroundColor:
                             MaterialStateProperty.all<Color>(Colors.black),
@@ -92,11 +84,13 @@ class _NovoDescarteState extends State<NovoDescarte> {
                         ),
                       ),
                     ),
-
-                    const SizedBox(width: NovoDescarte.SIZED_BOX_WIDTH,),
-
+                    const SizedBox(
+                      width: NovoDescarte.SIZED_BOX_WIDTH,
+                    ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        widget.onRefuse();
+                      },
                       style: ButtonStyle(
                         backgroundColor:
                             MaterialStateProperty.all<Color>(Colors.black),
