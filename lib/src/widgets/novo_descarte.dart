@@ -9,7 +9,7 @@ class NovoDescarte extends StatefulWidget {
     required this.onRefuse,
   });
 
-  Descarte descarte;
+  final Descarte descarte;
   final VoidCallback onAccept;
   final VoidCallback onRefuse;
 
@@ -105,7 +105,8 @@ class _NovoDescarteState extends State<NovoDescarte> {
                   ],
                 ),
               ),
-            ]),
+            ],
+        ),
       ),
     );
   }
