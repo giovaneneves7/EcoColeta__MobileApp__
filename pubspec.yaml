@@ -48,6 +48,9 @@ dependencies:
   # Dependência para possibilitar requsições http.
   http: ^1.1.0
 
+  # Dependência para adicionar o ícone da versão android e ios do aplicativo.
+  flutter_launcher_icons: "^0.13.1"
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -103,3 +106,7 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/logo.png"
