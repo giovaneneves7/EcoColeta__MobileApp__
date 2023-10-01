@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
 
     Timer(
-        Duration(
+        const Duration(
           seconds: 5,
         ), () {
       Navigator.of(context).pushReplacement(
@@ -34,10 +34,10 @@ class _SplashScreenState extends State<SplashScreen> {
             children: [
               Image.asset(
                 "assets/images/logo.png",
-                height: 150.0,
-                width: 150.0,
+                height: 250.0,
+                width: 250.0,
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               Text(
                 "EcoColeta",
                 style: TextStyle(
