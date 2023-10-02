@@ -24,14 +24,16 @@ class _NovoDescarteState extends State<NovoDescarte> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(4),
+        borderRadius: BorderRadius.circular(10),
         color: Colors.green[300],
       ),
       margin: const EdgeInsets.all(2.0),
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(4.0),
       alignment: Alignment.center,
       child: Center(
-        child: Column(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -106,6 +108,7 @@ class _NovoDescarteState extends State<NovoDescarte> {
                 ),
               ),
             ],
+          ),
         ),
       ),
     );
