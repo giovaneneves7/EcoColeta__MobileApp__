@@ -4,6 +4,7 @@ import "package:flutter/material.dart";
 import './morador/morador_home_page.dart';
 import './catador/catador_home_page.dart';
 import 'package:http/http.dart' as http;
+import 'package:ecocoleta/src/services/login_service.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
@@ -27,8 +28,8 @@ class LoginPage extends StatelessWidget {
                   child: Image.asset(
                     'assets/images/logo.png',
                     fit: BoxFit.contain,
-                    width: 150.0,
-                    height: 150.0,
+                    width: 250.0,
+                    height: 250.0,
                   ),
                 ),
 
@@ -50,6 +51,8 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                 ),
+
+                const SizedBox(height: 8.0),
 
                 // ===== [ Campo de Texto da senha ] ====== //
                 Padding(
@@ -73,15 +76,15 @@ class LoginPage extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
                     onPressed: () {
-
-                      login(emailController.text, passwordController.text,).then((isCatador) {
-
-                        Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(builder: (context) => (isCatador ? CatadorHomePage() : MoradorHomePage()))
-                        );
-
+                      login(
+                        emailController.text,
+                        passwordController.text,
+                      ).then((isCatador) {
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
+                            builder: (context) => (isCatador
+                                ? CatadorHomePage()
+                                : MoradorHomePage())));
                       });
-
                     },
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
@@ -91,12 +94,30 @@ class LoginPage extends StatelessWidget {
                     ),
                     child: const Padding(
                       padding: EdgeInsets.symmetric(vertical: 8.0),
-                      child: Text(
-                        "entrar",
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                        ),
+                      child: Row(
+                        children: [
+                          Text(
+                            "entrar",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text(
+                                "Esqueceu a senha?",
+                                style: TextStyle(
+                                  fontSize: 8.0,
+                                  fontWeight: FontWeight.w300,
+                                  decoration: TextDecoration.underline,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
                   ),
@@ -109,29 +130,27 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  Future<bool> login(final email, final password) async {
+  Future<bool> login(final e, final p) async {
 
-    final data = await getUsers();
+    LoginService loginService = LoginService();
+    return loginService.isValidUser(email: e, password: p);
+    /*final data = await getUsers();
 
-    return data["tipo"] == "catador" ? true : false;
-
+    return data["tipo"] == "catador" ? true : false;*/
   }
 
-  Future<dynamic> getUsers() async{
+  Future<dynamic> getUsers() async {
 
-    String url = "https://ecocoleta.free.beeceptor.com/users";
+    /*String url = "https://ecocoleta.free.beeceptor.com/users";
 
     http.Response response = await http.get(Uri.parse(url));
 
-    if(response.statusCode == 200){
+    if (response.statusCode == 200) {
       print("Response: $response");
       final responseBody = json.decode(response.body);
       print("ResponseBody: $responseBody");
 
       return responseBody;
-
-    }
-
+    }*/
   }
-
 }
