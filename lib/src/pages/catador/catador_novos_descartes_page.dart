@@ -19,14 +19,16 @@ class _CatadorNovosDescartesPageState extends State<CatadorNovosDescartesPage> {
   void acceptDescarte(Descarte descarte) {
     // Implementar lógica que atualizará o status do descarte para 'aceito'.
     setState(() {
-      descartesList.removeWhere((descarteContainer) => descarteContainer.descarte.id == descarte.id);
+      descartesList.removeWhere((descarteContainer) =>
+      descarteContainer.descarte.id == descarte.id);
     });
   }
 
   void refuseDescarte(Descarte descarte) {
     // Implementar lógica que recusará o descarte.
     setState(() {
-      descartesList.removeWhere((descarteContainer) => descarteContainer.descarte.id == descarte.id);
+      descartesList.removeWhere((descarteContainer) =>
+      descarteContainer.descarte.id == descarte.id);
     });
   }
 
@@ -35,36 +37,40 @@ class _CatadorNovosDescartesPageState extends State<CatadorNovosDescartesPage> {
     return SafeArea(
       child: Scaffold(
         body: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
             child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            FutureBuilder<List<Descarte>>(
-              future: getDescartes(),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return CircularProgressIndicator();
-                } else if (snapshot.hasError) {
-                  return Text('Erro: ${snapshot.error}');
-                } else {
-                  List<NovoDescarte> descartesList = snapshot.data
-                          ?.map((descarte) => NovoDescarte(
-                                descarte: descarte,
-                                onAccept: () => acceptDescarte(descarte),
-                                onRefuse: () => refuseDescarte(descarte),
-                              ))
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FutureBuilder<List<Descarte>>(
+                  future: getDescartes(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return CircularProgressIndicator();
+                    } else if (snapshot.hasError) {
+                      return Text('Erro: ${snapshot.error}');
+                    } else {
+                      List<NovoDescarte> descartesList = snapshot.data
+                          ?.map((descarte) =>
+                          NovoDescarte(
+                            descarte: descarte,
+                            onAccept: () => acceptDescarte(descarte),
+                            onRefuse: () => refuseDescarte(descarte),
+                          ))
                           .toList() ?? [];
 
-                  return Flexible(
-                    child: ListView(
-                      shrinkWrap: true,
-                      children: descartesList,
-                    ),
-                  );
-                }
-              },
+                      return Flexible(
+                        child: ListView(
+                          shrinkWrap: true,
+                          children: descartesList,
+                        ),
+                      );
+                    }
+                  },
+                ),
+              ],
             ),
-          ],
-        )),
+          ),),
       ),
     );
   }
@@ -78,7 +84,7 @@ class _CatadorNovosDescartesPageState extends State<CatadorNovosDescartesPage> {
     if (response.statusCode == 200) {
       print("Response: $response");
       final List<dynamic> responseBody =
-          json.decode(Utf8Codec().decode(response.bodyBytes));
+      json.decode(Utf8Codec().decode(response.bodyBytes));
 
       for (var descarteJson in responseBody) {
         Descarte descarte = Descarte.fromJson(descarteJson);
