@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:ecocoleta/src/widgets/novo_descarte.dart';
 import 'package:ecocoleta/src/models/descarte.dart';
+import 'package:ecocoleta/src/pages/catador/catador_descarte_details_page.dart';
 
 class CatadorNovosDescartesPage extends StatefulWidget {
   CatadorNovosDescartesPage({super.key});
@@ -32,6 +33,13 @@ class _CatadorNovosDescartesPageState extends State<CatadorNovosDescartesPage> {
     });
   }
 
+  void detailDescarte(int descarteId){
+
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (context) => CatadorDescarteDetailsPage(descarteId: descarteId)),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -56,6 +64,7 @@ class _CatadorNovosDescartesPageState extends State<CatadorNovosDescartesPage> {
                             descarte: descarte,
                             onAccept: () => acceptDescarte(descarte),
                             onRefuse: () => refuseDescarte(descarte),
+                            onDetail: () => detailDescarte(descarte.id),
                           ))
                           .toList() ?? [];
 
@@ -77,14 +86,15 @@ class _CatadorNovosDescartesPageState extends State<CatadorNovosDescartesPage> {
 
   Future<List<Descarte>> getDescartes() async {
     List<Descarte> descartes = [];
-    String url = "https://ecocoleta.free.beeceptor.com/descartes/novos";
+    String url = "http://localhost:8080/descarte/getAll";
 
     http.Response response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {
+
       print("Response: $response");
-      final List<dynamic> responseBody =
-      json.decode(Utf8Codec().decode(response.bodyBytes));
+
+      final List<dynamic> responseBody = json.decode(Utf8Codec().decode(response.bodyBytes));
 
       for (var descarteJson in responseBody) {
         Descarte descarte = Descarte.fromJson(descarteJson);
