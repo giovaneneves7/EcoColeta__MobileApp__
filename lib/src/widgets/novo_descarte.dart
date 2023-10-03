@@ -7,7 +7,7 @@ class NovoDescarte extends StatefulWidget {
     required this.descarte,
     required this.onAccept,
     required this.onRefuse,
-    required this.onDatail,
+    required this.onDetail,
   });
 
   final Descarte descarte;
