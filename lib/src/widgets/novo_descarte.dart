@@ -7,11 +7,14 @@ class NovoDescarte extends StatefulWidget {
     required this.descarte,
     required this.onAccept,
     required this.onRefuse,
+    required this.onDatail,
   });
 
   final Descarte descarte;
   final VoidCallback onAccept;
   final VoidCallback onRefuse;
+  final VoidCallback onDetail;
+
 
   static const double SIZED_BOX_WIDTH = 6.0;
 
@@ -74,7 +77,9 @@ class _NovoDescarteState extends State<NovoDescarte> {
                       width: NovoDescarte.SIZED_BOX_WIDTH,
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        widget.onDetail();
+                      },
                       style: ButtonStyle(
                         backgroundColor:
                             MaterialStateProperty.all<Color>(Colors.black),
