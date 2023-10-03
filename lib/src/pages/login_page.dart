@@ -134,23 +134,7 @@ class LoginPage extends StatelessWidget {
 
     LoginService loginService = LoginService();
     return loginService.isValidUser(email: e, password: p);
-    /*final data = await getUsers();
 
-    return data["tipo"] == "catador" ? true : false;*/
   }
 
-  Future<dynamic> getUsers() async {
-
-    /*String url = "https://ecocoleta.free.beeceptor.com/users";
-
-    http.Response response = await http.get(Uri.parse(url));
-
-    if (response.statusCode == 200) {
-      print("Response: $response");
-      final responseBody = json.decode(response.body);
-      print("ResponseBody: $responseBody");
-
-      return responseBody;
-    }*/
-  }
 }
