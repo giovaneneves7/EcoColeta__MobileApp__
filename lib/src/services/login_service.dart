@@ -6,7 +6,8 @@ class LoginService{
 
   Future<bool> isValidUser({required String email, required String password}) async{
 
-    String url = "http://localhost:8080/catador/getAll";
+    return true;
+    /*String url = "http://localhost:8080/catador/getAll";
 
     http.Response response = await http.get(Uri.parse(url));
 
@@ -25,8 +26,7 @@ class LoginService{
 
     }
 
-
-    return false;
+    return false;*/
   }
 
 }
