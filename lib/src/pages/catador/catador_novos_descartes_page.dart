@@ -86,7 +86,7 @@ class _CatadorNovosDescartesPageState extends State<CatadorNovosDescartesPage> {
 
   Future<List<Descarte>> getDescartes() async {
     List<Descarte> descartes = [];
-    String url = "http://localhost:8080/descarte/getAll";
+    String url = "ecocoleta.free.beeceptor.com/descartes/novos";
 
     http.Response response = await http.get(Uri.parse(url));
 
