@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../widgets/bottom_bar.dart';
 import './catador_inicial_page.dart';
 import './catador_map_page.dart';
 import '../user/user_settings_page.dart';
 
 class CatadorHomePage extends StatefulWidget {
+
   const CatadorHomePage({super.key});
 
   @override
@@ -17,6 +17,7 @@ class _CatadorHomePageState extends State<CatadorHomePage> {
   // ================================================ //
   int _currentPage = 0;
   late PageController pageController;
+  bool isMapDragging = false;
 
   // ================================================ //
   //                     | METHODS |                  //
@@ -48,9 +49,20 @@ class _CatadorHomePageState extends State<CatadorHomePage> {
       child: Scaffold(
         body: PageView(
           controller: pageController,
+          physics: isMapDragging ? NeverScrollableScrollPhysics() : null,
           children: [
             CatadorInicialPage(),
-            CatadorMapPage(),
+            CatadorMapPage(
+              onMapDragStart: () {
+              setState(() {
+                isMapDragging = true;
+              });
+            },
+              onMapDragEnd: () {
+                setState(() {
+                  isMapDragging = false;
+                });
+              },),
             UserSettingsPage(),
           ],
         ),
