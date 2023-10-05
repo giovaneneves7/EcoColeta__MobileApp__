@@ -45,6 +45,9 @@ dependencies:
   # Dependência para interação com a API do Google Maps.
   google_maps_flutter: ^2.5.0
 
+  # Dependência para decodificar a geolocalização.
+  geocoding: ^2.1.0
+
   # Dependência para possibilitar requsições http.
   http: ^1.1.0
 
