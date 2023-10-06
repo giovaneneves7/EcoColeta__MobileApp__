@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:ecocoleta/src/pages/chat_screen_page.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
@@ -29,6 +30,7 @@ class _CatadorDescarteDetailsPageState
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Color(0xFF71be78),
         body: Column(children: [
           Expanded(
             child: Column(
@@ -51,7 +53,9 @@ class _CatadorDescarteDetailsPageState
                 ),
                 Text("Material: ${descarteInfos['tipoMaterial'] ?? ''}"),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => ChatScreenPage()));
+                  },
                   child: Text("Chat Morador"),
                 )
               ],
