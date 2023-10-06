@@ -94,34 +94,32 @@ class LoginPage extends StatelessWidget {
                     ),
                     child: const Padding(
                       padding: EdgeInsets.symmetric(vertical: 8.0),
-                      child: Row(
-                        children: [
-                          Text(
-                            "entrar",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Text(
-                                "Esqueceu a senha?",
-                                style: TextStyle(
-                                  fontSize: 8.0,
-                                  fontWeight: FontWeight.w300,
-                                  decoration: TextDecoration.underline,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
+                      child: Text(
+                        "entrar",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                   ),
-                )
+                ),
+                const SizedBox(height: 8.0),
+
+                // ===== [ Link 'Esqueceu a senha?' ] ====== //
+                TextButton(
+                  onPressed: () {
+                    // Lógica para a recuperação de senha
+                  },
+                  child: Text(
+                    "Esqueceu a senha?",
+                    style: TextStyle(
+                      fontSize: 12.0, // Ajuste o tamanho da fonte conforme necessário
+                      fontWeight: FontWeight.w300,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
