@@ -5,11 +5,18 @@ import './morador/morador_home_page.dart';
 import './catador/catador_home_page.dart';
 import 'package:http/http.dart' as http;
 import 'package:ecocoleta/src/services/login_service.dart';
+import 'package:ecocoleta/src/pages/registro_page.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   LoginPage({super.key});
 
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   TextEditingController emailController = new TextEditingController();
+
   TextEditingController passwordController = new TextEditingController();
 
   @override
@@ -107,18 +114,36 @@ class LoginPage extends StatelessWidget {
                 const SizedBox(height: 8.0),
 
                 // ===== [ Link 'Esqueceu a senha?' ] ====== //
-                TextButton(
-                  onPressed: () {
-                    // Lógica para a recuperação de senha
-                  },
-                  child: Text(
-                    "Esqueceu a senha?",
-                    style: TextStyle(
-                      fontSize: 12.0, // Ajuste o tamanho da fonte conforme necessário
-                      fontWeight: FontWeight.w300,
-                      decoration: TextDecoration.underline,
+                Row(
+                  children: [
+                    TextButton(
+                      onPressed: () {
+                        // Lógica para a recuperação de senha
+                      },
+                      child: Text(
+                        "Esqueceu a senha?",
+                        style: TextStyle(
+                          fontSize: 12.0,
+                          fontWeight: FontWeight.w300,
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
                     ),
-                  ),
+                    const Text("ou"),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => RegistroPage()));
+                      },
+                      child: Text(
+                        "Deseja se cadastrar",
+                        style: TextStyle(
+                          fontSize: 12.0,
+                          fontWeight: FontWeight.w300,
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -134,5 +159,4 @@ class LoginPage extends StatelessWidget {
     return loginService.isValidUser(email: e, password: p);
 
   }
-
 }
