@@ -42,7 +42,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 "EcoColeta",
                 style: TextStyle(
                   fontSize: 20.0,
-                  color: Colors.green[300],
+                  color: Colors.green[700],
                 ),
               ),
             ],
