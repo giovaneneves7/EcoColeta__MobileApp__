@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ecocoleta/src/pages/autenticacao_usuario_page.dart';
 
 class RegistroPage extends StatefulWidget {
   RegistroPage({super.key});
@@ -120,13 +121,17 @@ class _RegistroPageState extends State<RegistroPage> {
                 ),
                 const SizedBox(height: 8.0),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => AutenticacaoUsuarioPage())
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                     minimumSize: const Size(double.infinity, 0),
-                    padding: EdgeInsets.symmetric(vertical: 8.0),
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
                   ),
                   child: const Padding(
                     padding: EdgeInsets.symmetric(vertical: 8.0),
