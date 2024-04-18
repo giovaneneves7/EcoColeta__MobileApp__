@@ -1,26 +1,52 @@
+import 'package:ecocoleta/common/controllers/theme_controller.dart';
+import 'package:ecocoleta/features/splash/controllers/splash_controller.dart';
+import 'package:ecocoleta/util/app_constants.dart';
 import 'package:flutter/material.dart';
-import 'package:ecocoleta/src/pages/splash_screen.dart';
-import './app_context.dart';
+import 'package:ecocoleta/helper/get_di.dart' as di;
+import 'package:get/get.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+
+  Map<String, Map<String, String>> languages = await di.init();
+
+  runApp(MyApp(languages: languages,));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatefulWidget {
 
+  Map<String, Map<String, String>>? languages;
+
+  MyApp({super.key, required this.languages});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+
+
+  
   @override
   Widget build(BuildContext context) {
 
-    AppContext.context = context;
+    return GetBuilder<ThemeController>(builder: (themeController) {
+      
+      return GetBuilder<SplashController>(builder: (splashController){
 
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        useMaterial3: true,
-        colorSchemeSeed: const Color(0xFF04A46C),
-      ),
-      home: new SplashScreen(),
-    );
+        return GetMaterialApp(
+          title: AppConstants.appName,
+          debugShowCheckedModeBanner: false,
+          navigatorKey: Get.key,
+          theme: themeController.darkTheme ? dark() : light(),
+          // locale: /* TODO: Create a localizeController */
+          translations: Messages(languages: widget.languages),
+
+        );
+
+      });
+
+    });
+    
   }
+
 }
