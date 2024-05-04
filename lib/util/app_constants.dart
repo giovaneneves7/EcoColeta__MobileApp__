@@ -6,6 +6,10 @@ class AppConstants{
   static const String appName = "EcoColeta";
   static const double appVersion = 0.1;
 
+  // Theme and Style
+  static const String fontFamily = 'Roboto';
+
+  
   // Api
   static const String apiHostName = 'ecocoleta.com.br';
 
