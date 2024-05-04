@@ -1,4 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:ecocoleta/features/dashboard/screens/dashboard_screen.dart';
 
 class RouteHelper{
 
@@ -20,7 +22,16 @@ class RouteHelper{
 
   static List<GetPage> routes =  [
     
-    GetPage(name: initial, page: () => getRoute),
+    GetPage(name: initial, page: () => getRoute(DashboardScreen(pageIndex: 0,))),
 
   ];
+
+  static Widget getRoute(Widget navigateTo, {bool byPusss = false}){
+
+    double? minimumVersion = 0;
+
+    return navigateTo;
+
+
+  }
 }
