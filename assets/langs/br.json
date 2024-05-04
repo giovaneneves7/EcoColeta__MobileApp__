@@ -1,3 +1,7 @@
 {
-    "connection_to_api_server_failed" : "Não foi possível conectar-se com o servidor"
+    "back_press_again_to_exit" : "Clique novamente para sair",
+    "connection_to_api_server_failed" : "Não foi possível conectar-se com o servidor",
+    "home" : "Início",
+    "map" : "Mapa",
+    "settings" : "Configurações"
 }
